@@ -1,0 +1,57 @@
+<Window x:Class="EASK_Project.DataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource {x:Type Window}}" WindowStartupLocation="CenterOwner"
+        Title="Маршруты и автомобили" Width="600" Height="540" MinWidth="520" MinHeight="520"
+        Closing="Window_Closing">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="16">
+            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+
+            <GroupBox Header="Добавить маршрут">
+                <Grid x:Name="RoutePanel">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="154"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/><RowDefinition Height="8"/>
+                        <RowDefinition Height="Auto"/><RowDefinition Height="8"/>
+                        <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Пункт _отправки:" Target="{Binding ElementName=DepartureTextBox}"/>
+                    <TextBox x:Name="DepartureTextBox" Grid.Column="1" MaxLength="100"/>
+                    <Label Grid.Row="2" Content="Пункт _прибытия:" Target="{Binding ElementName=ArrivalTextBox}"/>
+                    <TextBox x:Name="ArrivalTextBox" Grid.Row="2" Grid.Column="1" MaxLength="100"/>
+                    <Label Grid.Row="4" Content="_Расстояние, км:" Target="{Binding ElementName=RouteDistanceTextBox}"/>
+                    <TextBox x:Name="RouteDistanceTextBox" Grid.Row="4" Grid.Column="1" Width="130" HorizontalAlignment="Left"
+                             TextAlignment="Right" MaxLength="12" PreviewTextInput="NumericTextBox_PreviewTextInput"
+                             PreviewKeyDown="NumericTextBox_PreviewKeyDown" DataObject.Pasting="NumericTextBox_Pasting"/>
+                    <TextBlock x:Name="RouteStatusText" Grid.Row="5" Grid.ColumnSpan="2" MinHeight="20"
+                               Style="{StaticResource HintText}" Text="Расстояние — до двух знаков после запятой."/>
+                    <Button x:Name="AddRouteButton" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,0,0"
+                            Content="_Добавить маршрут" Click="AddRouteButton_Click"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="1" Header="Добавить марку автомобиля" Margin="0,12,0,0">
+                <Grid x:Name="BrandPanel">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="154"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/><RowDefinition Height="8"/><RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="_Марка автомобиля:" Target="{Binding ElementName=BrandNameTextBox}"/>
+                    <TextBox x:Name="BrandNameTextBox" Grid.Column="1" MaxLength="100"/>
+                    <Label Grid.Row="2" Content="Расход топлива, _л/км:" Target="{Binding ElementName=BrandConsumptionTextBox}"/>
+                    <TextBox x:Name="BrandConsumptionTextBox" Grid.Row="2" Grid.Column="1" Width="130" HorizontalAlignment="Left"
+                             TextAlignment="Right" MaxLength="12" PreviewTextInput="NumericTextBox_PreviewTextInput"
+                             PreviewKeyDown="NumericTextBox_PreviewKeyDown" DataObject.Pasting="NumericTextBox_Pasting"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="0,08 л/км = 8 л/100 км" Style="{StaticResource HintText}"/>
+                    <TextBlock x:Name="BrandStatusText" Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource HintText}"/>
+                    <Button x:Name="AddBrandButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Margin="0,10,0,0"
+                            Content="Добавить а_втомобиль" Click="AddBrandButton_Click"/>
+                </Grid>
+            </GroupBox>
+
+            <Button Grid.Row="2" Content="_Закрыть" HorizontalAlignment="Right" Margin="0,16,0,0" Click="CloseButton_Click"/>
+        </Grid>
+    </ScrollViewer>
+</Window>

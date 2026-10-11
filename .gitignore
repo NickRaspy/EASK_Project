@@ -1,0 +1,37 @@
+# Build output and dependencies
+**/bin/
+**/obj/
+/.packages/
+/packages/
+/artifacts/
+
+# IDE and personal settings
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+appsettings.local.json
+appsettings.*.local.json
+.env
+.env.*
+!.env.example
+
+# Local databases and logs
+*.mdf
+*.ldf
+*.ndf
+*.bak
+*.log
+TestResults/
+
+# Local submission packaging helper
+/scripts/prepare_delivery.py
+
+# OS and Python cache
+Thumbs.db
+.DS_Store
+__pycache__/
+*.py[cod]

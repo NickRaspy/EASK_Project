@@ -1,0 +1,15 @@
+* text=auto
+
+.editorconfig text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+
+*.cs text eol=lf
+*.xaml text eol=lf
+*.csproj text eol=lf
+*.json text eol=lf
+*.sql text eol=lf
+*.md text eol=lf
+*.sln text eol=crlf
+
+*.png binary
